@@ -1,0 +1,236 @@
+/* ===== RESET CSS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f6fa;
+    color: #1e1e2f;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    font-size: 1.4rem;
+    color: #1e1e2f;
+}
+
+.profil {
+    font-weight: 500;
+    color: #444;
+}
+
+/* ===== CONTAINER (sidebar + main) ===== */
+.container {
+    display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 220px;
+    min-height: calc(100vh - 60px);
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px 0;
+}
+
+.sidebar .logo {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0 20px 20px 20px;
+    color: #4f46e5;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 5px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #f0f0ff;
+    color: #4f46e5;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.main-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.main-content > p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+/* ===== CARDS ROW ===== */
+.cards-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card .etiquette {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.card .value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1e1e2f;
+}
+
+.card .evolution1 {
+    font-size: 0.8rem;
+    color: blue; 
+}
+
+.card .evolution2 {
+    font-size: 0.8rem;
+    color: green; 
+}
+
+.card .evolution3 {
+    font-size: 0.8rem;
+    color: purple; 
+}
+
+.card .evolution4 {
+    font-size: 0.8rem;
+    color:rgb(205, 205, 42); 
+}
+
+.card .evolution5 {
+    font-size: 0.8rem;
+    color: rgb(149, 149, 239); 
+}
+
+/* ===== CHARTS ROW ===== */
+.charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom:20px;
+}
+
+.chart-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    height:95%;
+}
+
+.chart-card img {
+    width: 100%;
+    height:auto;
+}
+
+/* ===== TABLES ROW ===== */
+.tables-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+}
+.table-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    position: relative;      /* point de repère pour le lien */
+    padding-bottom: 50px;    /* laisse de la place en bas pour le lien, pour qu'il ne chevauche pas le tableau */
+}
+
+.voir-plus {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Hauteur minimale identique pour les deux cartes */
+.activite-recente,
+.modeles-populaires {
+    min-height:120px;  
+}
+
+.table-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.table-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Bordure grise fine sous CHAQUE ligne */
+.table-card tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+/* Retire la bordure sur la dernière ligne pour ne pas avoir un double trait avec le lien en bas */
+.table-card tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-card th,
+.table-card td {
+    text-align: left;
+    padding: 12px 8px;
+    font-size: 0.9rem;
+}
+
+.table-card thead tr {
+    border-bottom: 1px solid #ddd; /* trait un peu plus marqué sous l'en-tête */
+}
+
+.table-card th {
+    color: #888;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: none;
+}
+
+
+

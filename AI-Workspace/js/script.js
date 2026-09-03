@@ -1,3 +1,18 @@
+
+// Fonction pour enregistrer une requête dans l'historique
+function enregistrerRequete(requete) {
+
+    // Récupération de l'historique existant
+    let historique = JSON.parse(localStorage.getItem("historique")) || [];
+
+    // Ajout de la nouvelle requête
+    historique.push(requete);
+
+    // Sauvegarde dans le navigateur
+    localStorage.setItem("historique", JSON.stringify(historique));
+}
+
+
 const mainContent = document.getElementById("main-content");
 const lienResume = document.querySelector('a[href="#resume"]');
 
@@ -46,6 +61,8 @@ lienResume.addEventListener("click", function (event) {
             zoneResume.textContent = "Veuillez saisir un texte.";
             return;
         }
+
+        enregistrerRequete(texte);
 
         const mots = texte.split(" ");
 
@@ -131,6 +148,7 @@ lienTraduction.addEventListener("click", function (event) {
         zoneTraduction.textContent = "Veuillez saisir un texte.";
         return;
     }
+    enregistrerRequete(texte);
 
     zoneTraduction.textContent =
         "Traduction simulée en " + langue + " : " + texte;
@@ -187,7 +205,7 @@ bouton.addEventListener("click", function () {
         zoneReponse.textContent = "Veuillez saisir un message.";
         return;
     }
-
+    enregistrerRequete(message);
     zoneReponse.textContent =
         "Réponse simulée de l'IA : Merci pour votre message. Je suis un assistant IA et voici une réponse simulée à votre demande.";
 });
@@ -257,6 +275,12 @@ lienPrediction.addEventListener("click", function (event) {
             return;
         }
 
+        enregistrerRequete(
+            "Prédiction - Âge : " + valeurAge +
+            ", Revenu : " + valeurRevenu +
+            ", Ville : " + valeurVille
+        );
+
         // Affichage de la prédiction fictive
         resultat.textContent =
             "Prédiction fictive : profil analysé avec succès pour une personne de " +
@@ -265,6 +289,141 @@ lienPrediction.addEventListener("click", function (event) {
             valeurVille + ".";
     });
 });
+
+
+// Récupération du lien Historique
+const lienHistorique = document.querySelector('a[href="#historique"]');
+function afficherHistorique(filtre = "") {
+
+    const historique = JSON.parse(localStorage.getItem("historique")) || [];
+
+    const listeHistorique = document.getElementById("liste-historique");
+
+    listeHistorique.innerHTML = "";
+
+    // Filtrer les requêtes
+    const resultats = historique.filter(function (requete) {
+        return requete.toLowerCase().includes(filtre.toLowerCase());
+    });
+
+    // Si aucun résultat
+    if (resultats.length === 0) {
+        listeHistorique.textContent = "Aucune requête trouvée.";
+        return;
+    }
+
+    // Afficher les résultats
+    resultats.forEach(function (requete) {
+
+        const element = document.createElement("p");
+
+        element.textContent = requete;
+
+        listeHistorique.appendChild(element);
+    });
+}
+lienHistorique.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    // On vide la zone principale
+    mainContent.innerHTML = "";
+
+    // Création du titre
+    const titre = document.createElement("h2");
+    titre.textContent = "Historique";
+    mainContent.appendChild(titre);
+
+    // Création du texte d'introduction
+    const introduction = document.createElement("p");
+    introduction.textContent = "Retrouvez ici toutes vos requêtes précédentes.";
+    mainContent.appendChild(introduction);
+
+    // Création de la zone de recherche
+    const recherche = document.createElement("input");
+    recherche.type = "text";
+    recherche.placeholder = "Rechercher dans l'historique...";
+    mainContent.appendChild(recherche);
+
+    // Création de la zone d'affichage
+    const listeHistorique = document.createElement("div");
+    listeHistorique.id = "liste-historique";
+    listeHistorique.textContent = "Aucune requête dans l'historique.";
+    mainContent.appendChild(listeHistorique);
+
+    function afficherHistorique(filtre = "") {
+
+    const historique = JSON.parse(localStorage.getItem("historique")) || [];
+
+    const listeHistorique = document.getElementById("liste-historique");
+
+    listeHistorique.innerHTML = "";
+
+    historique.forEach(function (requete, index) {
+
+        // Vérifier si la requête correspond à la recherche
+        if (!requete.toLowerCase().includes(filtre.toLowerCase())) {
+            return;
+        }
+
+        // Créer une ligne pour la requête
+        const element = document.createElement("div");
+
+        // Afficher la requête
+        const texte = document.createElement("span");
+        texte.textContent = requete;
+
+        // Créer le bouton Supprimer
+        const boutonSupprimer = document.createElement("button");
+        boutonSupprimer.textContent = "Supprimer";
+
+        // Action du bouton
+        boutonSupprimer.addEventListener("click", function () {
+
+            // Supprimer la requête
+            historique.splice(index, 1);
+
+            // Sauvegarder le nouvel historique
+            localStorage.setItem("historique", JSON.stringify(historique));
+
+            // Réafficher l'historique
+            afficherHistorique(filtre);
+        });
+
+        element.appendChild(texte);
+        element.appendChild(boutonSupprimer);
+
+        listeHistorique.appendChild(element);
+    });
+
+    // Vérifier s'il y a des résultats
+    if (listeHistorique.children.length === 0) {
+        listeHistorique.textContent = "Aucune requête trouvée.";
+    }
+}
+
+    recherche.addEventListener("input", function () {
+
+    afficherHistorique(recherche.value);
+
+});
+
+    // Bouton pour vider l'historique
+    const boutonVider = document.createElement("button");
+    boutonVider.textContent = "Vider l'historique";
+    mainContent.appendChild(boutonVider);
+
+    boutonVider.addEventListener("click", function () {
+
+    // Supprimer tout l'historique
+    localStorage.removeItem("historique");
+
+    // Réafficher l'historique vide
+    afficherHistorique();
+});
+});
+
+
 
 
 // Récupération du lien Tableau de bord

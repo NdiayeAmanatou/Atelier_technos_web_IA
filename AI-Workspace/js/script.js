@@ -191,3 +191,76 @@ bouton.addEventListener("click", function () {
 });
 
 });
+
+
+// Récupération du lien Prédiction
+const lienPrediction = document.querySelector('a[href="#prediction"]');
+
+lienPrediction.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    // On vide la zone principale
+    mainContent.innerHTML = "";
+
+    // Création du titre
+    const titre = document.createElement("h2");
+    titre.textContent = "Prédiction";
+    mainContent.appendChild(titre);
+
+    // Création du texte d'introduction
+    const introduction = document.createElement("p");
+    introduction.textContent = "Saisissez votre âge, votre revenu et votre ville pour obtenir une prédiction fictive.";
+    mainContent.appendChild(introduction);
+
+    // Zone de saisie de l'âge
+    const age = document.createElement("input");
+    age.type = "number";
+    age.placeholder = "Âge";
+    mainContent.appendChild(age);
+
+    // Zone de saisie du revenu
+    const revenu = document.createElement("input");
+    revenu.type = "number";
+    revenu.placeholder = "Revenu";
+    mainContent.appendChild(revenu);
+
+    // Zone de saisie de la ville
+    const ville = document.createElement("input");
+    ville.type = "text";
+    ville.placeholder = "Ville";
+    mainContent.appendChild(ville);
+
+    // Création du bouton Prédire
+    const bouton = document.createElement("button");
+    bouton.textContent = "Prédire";
+    mainContent.appendChild(bouton);
+
+    // Zone d'affichage de la prédiction
+    const resultat = document.createElement("div");
+    resultat.id = "prediction-resultat";
+    resultat.textContent = "La prédiction apparaîtra ici...";
+    mainContent.appendChild(resultat);
+
+    // Action lorsqu'on clique sur Prédire
+    bouton.addEventListener("click", function () {
+
+        const valeurAge = age.value;
+        const valeurRevenu = revenu.value;
+        const valeurVille = ville.value;
+
+        // Vérification des champs
+        if (valeurAge === "" || valeurRevenu === "" || valeurVille.trim() === "") {
+            resultat.textContent = "Veuillez remplir tous les champs.";
+            return;
+        }
+
+        // Affichage de la prédiction fictive
+        resultat.textContent =
+            "Prédiction fictive : profil analysé avec succès pour une personne de " +
+            valeurAge + " ans, avec un revenu de " +
+            valeurRevenu + " FCFA, habitant à " +
+            valeurVille + ".";
+    });
+});
+

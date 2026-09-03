@@ -56,6 +56,8 @@ lienResume.addEventListener("click", function (event) {
 
 });
 
+
+
 // Récupération du lien Traduction
 const lienTraduction = document.querySelector('a[href="#traduction"]');
 
@@ -263,4 +265,17 @@ lienPrediction.addEventListener("click", function (event) {
             valeurVille + ".";
     });
 });
+
+
+// Récupération du lien Tableau de bord
+const lienDashboard = document.querySelector('a[href="#dashboard"]');
+
+lienDashboard.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    // Retour à la page initiale du tableau de bord
+    window.location.reload();
+});
+
 

@@ -243,6 +243,7 @@ textarea {
     resize: vertical;
     box-sizing: border-box;
 }
+
 button {
     display: block;
     padding: 10px 20px;
@@ -265,7 +266,6 @@ button {
     background-color: #f8f9fa;
     box-sizing: border-box;
 }
-
 /* Titre de la page Résumé */
 .main-content h2 {
     font-size: 28px;

@@ -40,7 +40,7 @@ header h1 {
 .sidebar {
     width: 220px;
     min-height: calc(100vh - 60px);
-    background-color: #ffffff;
+    background-color:rgb(180, 171, 171);
     border-right: 1px solid #e0e0e0;
     padding: 20px 0;
 }
@@ -232,5 +232,85 @@ header h1 {
     text-transform: none;
 }
 
+textarea {
+    width: 70%;
+    min-height: 200px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+button {
+    display: block;
+    padding: 10px 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    color:green
+}
+
+#resume-resultat {
+    width: 60%;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-height: 80px;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+}
+
+/* Titre de la page Résumé */
+.main-content h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #0868f0;
+}
+
+/* Texte d'introduction */
+.main-content p {
+    font-size: 16px;
+    color: #5278c4;
+    margin-top: 0;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+.profil .arrow {
+    font-size: 0.7rem;
+    margin-left: 6px;
+    color: #888;
+}
+
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#traduction-resultat {
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-height: 80px;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+    width: 70%;
+}
 
 
